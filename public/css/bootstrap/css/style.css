@@ -1,0 +1,515 @@
+* {
+  padding: 0px;
+  margin: 0px;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Source Sans Pro', sans-serif;
+}
+
+a {
+  text-decoration: none;
+  color: #1b1e4e;
+}
+
+h4 {
+  padding-top: 10px;
+  padding-bottom: 2px;
+  font-weight: bold;
+  color: white;
+}
+
+h5 {
+  font-weight: bold;
+  font-style: normal;
+  color: #383fa8;
+}
+
+/*Cabeçalho*/
+.topo {
+  background: #262a67;
+  width: 100%;
+  height: 15%;
+  z-index: 1;
+  padding-left: 15px;
+}
+
+.imagem-logo-cabecalho {
+  width: 150px;
+}
+
+/*Lateral*/
+#dados-lateral {
+  align-items: center;
+  padding-top: 15px;
+}
+
+#dados-lateral ul li {
+  align-items: center;
+  margin-top: 13px;
+  text-align: left;
+  font-weight: bold;
+}
+
+#dados-lateral img {
+  margin-right: 7px;
+  align-items: center;
+}
+
+ul li::before {
+  align-items: center;
+}
+
+.lista-personalizada li {
+  list-style: none;
+}
+
+.lista-personalizada li::marker {
+  color: red;
+  font-size: 24px;
+}
+
+.background-lateral {
+  background: #6268c0;
+}
+
+.background-banner-lateral {
+  background: #b1bce0;
+  text-align: center;
+  border-radius: 15px;
+}
+
+.ajustes-fonte-lateral {
+  margin-top: 100px;
+  font-size: 25px;
+  font-weight: bold;
+  align-items: center;
+}
+
+.ajustes-fonte-lateral a:hover {
+  color: white;
+  text-decoration: none;
+  transition: all 1s;
+}
+
+.ajustes-fonte-lateral img:hover {
+  transition: all 1s;
+  background: url('../imagens/creditos.png') none;
+  z-index: 2;
+}
+
+.ajustes-interrogacao {
+  width: 10px;
+  background: #748ece;
+  border-radius: 50%;
+  margin-bottom: 3px;
+}
+
+.funcao {
+  font-weight: bold;
+  font-style: italic;
+  margin: auto;
+}
+
+.nome {
+  font-weight: bold;
+  margin: 1px;
+}
+
+.matricula {
+  font-weight: bold;
+  font-style: italic;
+  margin: 1px;
+}
+
+.background-lateral-2 {
+  background: white;
+  text-align: center;
+  border-radius: 15px;
+}
+
+.texto-numero-lateral {
+  padding: 0;
+  margin: 0;
+  font-size: 1em;
+  text-align: center;
+  color: #262a67;
+  font-weight: bold;
+}
+
+/*Banner principal*/
+
+.background-banner {
+  background: white;
+}
+
+/*Banner principal*/
+/*Primeira divisão */
+#infospc {
+  margin-top: 5px;
+}
+
+.index {
+  z-index: 1;
+}
+
+.background-banner-principal {
+  background: #b1bce0;
+  text-align: center;
+  border-radius: 15px;
+  width: 100%;
+  height: 50px;
+  margin-top: 20px;
+  align-items: center;
+  padding-top: 5px;
+}
+
+.estilo-range {
+  background: rgba(0, 0, 0, 0);
+  height: 55px;
+}
+
+.barra {
+  background: #e3e3e3;
+  height: 7px;
+  margin-top: -64px;
+  border-radius: 100px;
+}
+
+.info1 {
+  background: #004a94;
+  width: 25px;
+  height: 25px;
+  margin-top: -45px;
+  border-radius: 100px;
+  margin-left: 9%;
+}
+
+.info2 {
+  z-index: 1;
+  background: #117d07;
+  width: 25px;
+  height: 25px;
+  margin-top: -45px;
+  border-radius: 5px;
+  margin-left: 30%;
+}
+
+.info3 {
+  z-index: 1;
+  background: #981616;
+  width: 25px;
+  height: 25px;
+  margin-top: -45px;
+  border-radius: 5px;
+  margin-left: 63%;
+}
+
+.info4 {
+  background: #981616;
+  width: 25px;
+  height: 25px;
+  margin-top: -45px;
+  border-radius: 5px;
+  margin-left: 87%;
+}
+
+.formata-imagem-avaliacao {
+  width: 115px;
+  margin-top: 10px;
+}
+
+#imagem-avaliacao img:hover {
+  width: 130px;
+  transition: all 0.2s;
+}
+
+/*Banner principal*/
+/*Segunda divisão*/
+.avaliacao {
+  background: #262a67;
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+
+.icon-avaliacao {
+  color: green;
+  float: right;
+}
+.icon-avaliacao a {
+  color: white;
+}
+
+.icon-avaliacao a:hover {
+  color: #e5e5e5;
+  margin-left: 2px;
+  text-decoration: none;
+}
+
+/*Tabela*/
+td {
+  border: solid white;
+  background: #e2e2e2;
+  font-weight: bold;
+}
+
+tr {
+  border: solid white;
+  font-size: 16px;
+}
+
+.transicao-tabela {
+  transition: all 1s;
+  color: #262a67;
+}
+
+.centralizado {
+  text-align: center;
+}
+
+.td3 img {
+  width: 10%;
+  cursor: pointer;
+}
+
+.td3 img:hover {
+  width: 12%;
+}
+
+/*Modal*/
+button {
+  text-align: center;
+  margin: auto;
+}
+
+button:hover {
+  background: rgba(0, 0, 0, 0);
+  border: solid #262a67 0.5px;
+  color: #262a67;
+  transition-duration: 0.2s;
+}
+
+.bt-modal {
+  background: #383fa8;
+  color: white;
+}
+
+.transicao-modal {
+  transition: all 0.5s;
+}
+
+.questao-modal {
+  font-size: 16px;
+  font-weight: 700;
+  color: black;
+}
+
+/*Rodapé*/
+footer {
+  text-align: center;
+  bottom: 0;
+  background-color: #262a67;
+  color: #fff;
+  width: 100%;
+  height: 15%;
+  line-height: 100px;
+}
+
+.imagem-logo-rodape {
+  width: 150px;
+  margin-top: 0px;
+}
+
+/*ajustando o responsivo*/
+#responsivotabelamobile {
+  display: none;
+}
+
+#mascara-imagem-avaliacao {
+  display: none;
+}
+
+.area-tabela {
+  height: 460px;
+  color: #030e30;
+}
+
+/*responsivo geral*/
+@media (max-width: 1240px) {
+  #responsivotabelamobile {
+    display: block;
+  }
+
+  #responsivotabelapc {
+    display: none;
+  }
+}
+
+@media (max-width: 860px) {
+  #veravaliacaomobile {
+    display: block;
+  }
+
+  #veravaliacaopc {
+    display: none;
+  }
+  /*
+	#infospc {
+		display: none;
+	}*/
+
+
+
+  h4,
+  h5 {
+    font-size: 100%;
+  }
+
+  .ajustes-fonte-lateral {
+    font-size: 20px;
+    align-items: center;
+    font-weight: normal;
+    margin-top: 10%;
+  }
+
+  .topo {
+    text-align: center;
+  }
+
+  .imagem-logo-cabecalho {
+    width: 35%;
+  }
+
+  .imagem-logo-rodape {
+    width: 20%;
+  }
+}
+
+
+
+/*exlusivo banner principal, div 1*/
+@media (max-width: 516px) {
+  .informacoes-banner-1 {
+    font-size: 75%;
+  }
+
+  .barra {
+    margin-top: -54px;
+  }
+
+  #mascara-imagem-avaliacao {
+    display: block;
+  }
+
+  #imagem-avaliacao {
+    display: none;
+  }
+}
+
+@media (max-width: 432px) {
+  .barra {
+    margin-top: -54px;
+  }
+}
+
+/***range copiado da net***/
+/*referencia salva no pc*/
+/*mostra o percurso*/
+input[type='range'] {
+  /*removes default webkit styles*/
+  -webkit-appearance: none;
+
+  /*fix for FF unable to apply focus style bug */
+  /*border: 1px solid white;*/
+
+  /*required for proper track sizing in FF*/
+  width: 300px;
+}
+/*mostra barra original
+/*input[type=range]::-webkit-slider-runnable-track {
+    width: 300px;
+    height: 5px;
+    background: black;
+    border: none;
+    border-radius: 3px;
+}*/
+
+/*mostra a "bolinha"*/
+input[type='range']::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  border: none;
+  height: 20px;
+  width: 20px;
+  border-radius: 50%;
+  background: yellow;
+  margin-top: 0px;
+}
+/*input[type=range]:focus {
+    outline: none;
+}*/
+/*input[type=range]:focus::-webkit-slider-runnable-track {
+    /*background: #ccc;
+}*/
+
+/*input[type=range]::-moz-range-track {
+    width: 300px;
+    height: 5px;
+    /*background: #ddd;
+    border: none;
+    border-radius: 3px;
+}*/
+/*
+input[type=range]::-moz-range-thumb {
+    border: none;
+    height: 16px;
+    width: 16px;
+    border-radius: 50%;
+    /*background: goldenrod;
+}
+
+/*hide the outline behind the border*/
+/*input[type=range]:-moz-focusring{
+    /*outline: 1px solid white;
+    outline-offset: -1px;
+}*/
+
+/*input[type=range]::-ms-track {
+    width: 300px;
+    height: 5px;*/
+
+/*remove bg colour from the track, we'll use ms-fill-lower and ms-fill-upper instead */
+/*background: transparent;*/
+
+/*leave room for the larger thumb to overflow with a transparent border */
+/*border-color: transparent;*/
+/*border-width: 6px 0;*/
+
+/*remove default tick marks*/
+/*color: transparent;
+}
+/*input[type=range]::-ms-fill-lower {
+    /*background: #777;
+    border-radius: 10px;
+}*/
+/*input[type=range]::-ms-fill-upper {
+    /*background: #ddd;
+    border-radius: 10px;
+}*/
+/*input[type=range]::-ms-thumb {
+    border: none;
+    height: 16px;
+    width: 16px;
+    border-radius: 50%;
+    /*background: goldenrod;
+}*/
+/*
+input[type=range]:focus::-ms-fill-lower {
+    /*background: #888;
+}*/
+/*input[type=range]:focus::-ms-fill-upper {
+    /*background: #ccc;
+}*/
+/*fim range*/
+

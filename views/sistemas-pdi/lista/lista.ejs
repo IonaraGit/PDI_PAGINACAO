@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <%- include('../../layout/header.ejs') %>
+  <body class="d-flex flex-column min-vh-100">
+    <!--INICIO CONTAINER CABECALHO-->
+    <div class="row text-center mt-5">
+      <div class="col-12">
+        <h4>1ª Rodada PDI</h4>
+      </div>
+      <div class="col-12">
+        <p>Lista de servidores interessados ao PDI.</p>
+      </div>
+    </div>
+    <!--FIM CONTAINER CABECALHO-->
+
+    <!--INICIO TABELA COM TODOS OS DADOS DO SERVIDOR-->
+    <div class="content">
+      <!--INICIO BUSCAS SERVIDOR (QUANTIDADE E MATRICULA)-->
+      <div class="content-input-select container-input-select">
+      
+        <div class="d-flex">
+          <input
+            placeholder="Digite a matrícula do servidor"
+            style="
+              border: solid 1px #2b29af;
+              border-radius: 7px 0px 0px 7px;
+              min-width: 250px;
+              max-width: 280px;
+              background-color: #FFF;
+            "
+            type="text"
+            class="form-control color-input"
+            aria-label="Recipient's username"
+            aria-describedby="basic-addon2"
+          />
+          <button
+            class="btn"
+            style="
+              float: left;
+              margin-left: -25px;
+              background-color: #FFF;
+              border-radius: 0px 7px 7px 0px;
+              border: solid 1px #2b29af;
+            "
+          >
+            <img src="../../assets/img/lupa1.png" style="width: 15px" />
+          </button>
+        </div>
+      
+        <!--INICIO BOTÃO GERAR RELATÓRIO-->
+          <a class="btn btn-success" href="/sistemas/pdi/relatorios">Exportar <i class="bi bi-file-ruled"></i> </a>       
+        <!--FIM BOTÃO GERAR RELATÓRIO-->
+     
+          <form action="" method="get">
+          <label for="limit">Elementos por página:</label>
+          <select id="limit" name="limit">
+            <option value="2">2</option>
+            <option value="5">5</option>
+            <option value="10" selected>10</option>
+            <option value="20">20</option>
+            <option value="50">50</option>
+          </select>
+          <button type="submit">Enviar</button>
+        </form>
+
+       
+     
+      </div>
+      <!--FIM BUSCAS SERVIDOR (QUANTIDADE E MATRICULA)-->
+      
+     
+      <div class="table-content table-responsive mt-3">
+      </div>
+    </div>
+    <!--FIM TABELA COM TODOS OS DADOS DO SERVIDOR-->
+
+    <!--INICIO PAGINAÇÃO-->
+    <nav aria-label="Page navigation example" class="mt-2">
+      <ul class="pagination pagination justify-content-center">
+        <li class="page-item">
+          <a class="page-link text-purple" href="/sistemas/pdi/elegiveis/pagina/2"
+            ><span aria-hidden="true">&raquo;</span></a
+          >
+        </li>
+      </ul>
+    </nav>
+    <!--FIM PAGINAÇÃO-->
+
+    <br />
+
+    <!--MODAL DE DETALHES DO SERVIDOR-->
+    <div
+      class="modal fade"
+      id="exampleModal"
+      tabindex="-1"
+      aria-labelledby="exampleModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title text-purple" id="exampleModalLabel">
+              Detalhes
+            </h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <div role="alert" id="alertSuccess">
+              <div class="form-group mb-3 container-box">
+                <div
+                  class="w-100 p-3 box-info border border-muted rounded detalhe-modal-sal"
+                >
+                  <div class="text-dark">Data de admissão</div>
+                  <div class="text-dark fw-bold">14/03/2023</div>
+                </div>
+                <div class="w-100 p-3 box-info border border-muted rounded">
+                  <div class="text-dark text-left">Tempo de serviço</div>
+                  <div class="text-dark fw-bold text-left">35 anos</div>
+                </div>
+              </div>
+
+              <div class="form-group mb-3 container-box">
+                <div
+                  class="w-100 p-3 box-info border border-muted rounded detalhe-modal-sal"
+                >
+                  <div class="text-dark">Ref. Salário:</div>
+                  <div class="text-danger fw-bold">(CF-2) R$ 2.150</div>
+                </div>
+                <div class="w-100 p-3 box-info border border-muted rounded">
+                  <div class="text-dark">Indenização:</div>
+                  <div class="d-flex text-danger fw-bold">R$ 75.250,00</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <script src="/js/lista.js"></script>
+  <script>
+    document.getElementById("enviar").addEventListener("click", function() {
+      const opcaoSelecionada = document.querySelector('input[name="opcoes"]:checked').value;
+      fetch(`/sistemas/pdi/listaInteressados?limit=${opcaoSelecionada}`)
+      .then(response => response.json())
+      .then(data => console.log(data))
+      .catch(error => console.error(error));
+    });
+  </script>
+  
+  <%- include('../../layout/footer.ejs') %>
+</html>

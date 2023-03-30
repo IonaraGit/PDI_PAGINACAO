@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <%- include('../layout/header.ejs') %>
+  <div class="p-3 nome-perfil">
+    <p style="font-size: 20px">
+      Bem vindo(a), <span class="fw-bold"><%= usuario.nome %></span>
+    </p>
+  </div>
+
+  <body class="d-flex flex-column min-vh-100">
+    <div class="container container-tela-grande">
+      <!--INICIO CONTAINER CABECALHO-->
+      <div class="container" style="padding: 0">
+<!--         <div class="w-100 text-center mb-5 mt-3">
+          <p class="h4">Plano de Demissão Incentivada</p>
+        </div> -->
+        <div class="d-flex w-100 justify-content-center mb-5">
+          <img class="w-25" src="/assets/img/selo-pdi.png"></img>
+        </div>
+      </div>
+      <!--FIM CONTAINER CABECALHO-->
+
+      <!--INICIO DADOS PESSOAIS-->
+      <div class="mb-3">
+        <p class="text-purple h6 text-center titulo-dados">DADOS PESSOAIS:</p>
+      </div>
+      <div class="col container-dados-pessoal">
+        <div class="form-group mb-3">
+          <label for="matricula" class="form-label text-purple h6"
+            >MATRÍCULA:</label
+          >
+          <input
+            type="text"
+            name="matricula"
+            id="matricula"
+            class="form-control p-3"
+            readonly
+            placeholder="<%= usuario.matricula -%>"
+          />
+        </div>
+        <div class="form-group mb-3">
+          <label for="nome" class="form-label text-purple h6">NOME:</label>
+          <input
+            type="text"
+            name="nome"
+            id="nome"
+            class="form-control p-3"
+            readonly
+            placeholder="<%= usuario.nome -%>"
+          />
+        </div>
+      </div>
+      <!--FIM DADOS PESSOAIS-->
+
+      <!--INICIO DADOS COMPLEMENTARES-->
+      <div class="form-group">
+        <label for="" class="form-label text-purple h6">
+          INFORMAÇÕES COMPLEMENTARES:
+        </label>
+      </div>
+      <div class="form-group mb-3 container-box">
+        <div
+          class="col border border-muted rounded d-flex align-items-center gap-1 p-3 mb-3 box-info"
+          style="background: rgb(255, 255, 255)"
+        >
+          <p class="text-dark" style="font-weight: bold">Data de admissão:</p>
+          <p id="admissao" class="text-dark" style="font-weight: bold"></p>
+        </div>
+        <div
+          class="col border border-muted rounded d-flex gap-1 p-3 box-info box-info"
+          style="background: rgb(255, 255, 255)"
+        >
+          <p class="text-dark" style="font-weight: bold">Tempo de serviço:</p>
+          <p id="tempo" class="text-dark" style="font-weight: bold"></p>
+        </div>
+      </div>
+      <!--FIM DADOS PESSOAIS-->
+
+      <div class="form-group mb-3">
+        <ul class="list-group">
+          <li
+            class="list-group-items list-group-item-success rounded d-flex align-items-center justify-content-center p-3 text-black fw-bold text-center"
+            style="background-color: #5cb54f"
+          >
+            Você se enquadra ao PDI.
+          </li>
+        </ul>
+      </div>
+
+      <!--INICIO DADOS MONETARIOS-->
+      <div
+        class="bg-light w-100 p-2 d-flex align-items-center justify-content-center flex-column rounded mb-5"
+      >
+        <div class="w-100 mb-2 border-top border-bottom container-box">
+          <div
+            class="d-flex align-items-center justify-content-between w-100 p-3 box-info"
+          >
+            <div class="text-dark">Ref. Salário:</div>
+            <div id="referenciaSalarial" class="text-danger fw-bold"></div>
+          </div>
+          <div
+            class="d-flex align-items-center justify-content-between w-100 p-3 box-info"
+          >
+            <div class="text-dark">Indenização:</div>
+            <div class="d-flex align-items-center gap-1">
+              <div id="pdi" class="text-danger fw-bold"></div>
+              <div>
+                <i
+                  class="bi bi-exclamation-circle text-danger"
+                  data-bs-toggle="tooltip"
+                  data-bs-placement="bottom"
+                  title="Atenção: esse valor é uma estimativa, podendo variar para mais ou para menos"
+                ></i>
+              </div>
+            </div>
+          </div>
+        </div>
+        <p class="fw-bold text-success">ATENÇÃO!</p>
+        <p class="fw-bold text-success"> O valor acima é uma estimativa, podendo sofrer alterações</p>
+        <div
+          class="w-100 px-3 d-flex align-items-center justify-content-center"
+        >
+          <span class="align-baseline p-1 text-left">
+            Para entrar na lista do <strong>PDI</strong> é necessário ler
+            atentamente todos os termos e requisitos do programa. Clique no
+            botão a seguir para ler os termos e condições.
+          </span>
+        </div>
+        <div
+          class="w-100 mt-3 d-flex align-items-center justify-content-center mx-auto mt-2"
+        >
+          <a
+            class="btn p-3 bt-geral"
+            id="btn-next"
+            href="/sistemas/pdi/termos#collapseExample"
+            style="background: rgb(130, 10, 209)"
+          >
+            Manifestar interesse
+          </a>
+        </div>
+      </div>
+      <!--FIM DADOS MONETARIOS-->
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="/js/pdi.js"></script>
+    <script src="/js/main.js"></script>
+  </body>
+  <%- include('../layout/footer.ejs') %>
+</html>

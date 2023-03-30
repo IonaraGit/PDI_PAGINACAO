@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <%- include('../../layout/header.ejs') %>
+  <body class="d-flex flex-column min-vh-100">
+    <!--INICIO CONTAINER CABECALHO-->
+    <div class="row text-center mt-5">
+      <div class="col-12">
+        <h4>Lista de servidores elegíveis</h4>
+      </div>
+      <p>Lista de servidores aptos para aderir ao PDI.</p>
+    </div>
+    <!--FIM CONTAINER CABECALHO-->
+    <div id="resultado">
+
+    </div>
+    <!--INICIO TABELA COM TODOS OS DADOS DO SERVIDOR-->
+    <div class="content">
+      <!--INICIO BUSCAS SERVIDOR (QUANTIDADE E MATRICULA)-->
+      <div class="content-input-select container-input-select">
+        <div class="d-flex">
+          <input
+            placeholder="Buscar por matricula"
+            style="
+              border: solid 1px #2b29af;
+              border-radius: 7px 0px 0px 7px;
+              min-width: 250px;
+              max-width: 280px;
+              background-color: #FFF;
+            "
+            type="text"
+            class="form-control color-input"
+            aria-label="Recipient's username"
+            aria-describedby="basic-addon2"
+            id="buscarElegivel"
+            onkeypress="return onlynumber()"/>
+          <button
+            class="btn"
+            style="
+              float: left;
+              margin-left: -25px;
+              background-color: #FFF;
+              border-radius: 0px 7px 7px 0px;
+              border: solid 1px #2b29af;
+            "
+          onclick="buscarServidor()"
+          data-bs-toggle="modal"
+          data-bs-target="#exampleModal">
+            <img src="../../assets/img/lupa1.png" style="width: 15px" />
+          </button>
+          
+        </div>
+      </div>
+      <!--FIM BUSCAS SERVIDOR (QUANTIDADE E MATRICULA)-->
+      
+
+      <div class="table-responsive text-center">
+        <table class="table table-striped mt-3">
+          <thead class="color-input align-middle">
+            <th class="cabecalho text-center">Matrícula</th>
+            <th class="cabecalho text-center">Nome</th>
+            <th class="cabecalho text-center">CPF</th>
+            <th class="cabecalho text-center">Cargo</th>
+            <th class="cabecalho text-center">Tempo de serviço</th>
+            <th class="cabecalho text-center">Data de admissão</th>
+            <th class="cabecalho text-center">Sal. Referência</th>
+            <th class="cabecalho text-center">INCENTIVO (PDI)</th>
+            <th class="cabecalho text-center">Setor</th>
+            <th class="cabecalho text-center">Salario</th>
+          </thead>
+  
+          <tbody>
+            <!-- <tr class="espacamento-tabelas"> -->
+              <!-- <th class="cabecalho-responsivo-servidor" style="padding: 10px">
+                Servidor
+              </th> -->
+              <!-- <td data-title="Matricula:" id="renderMatricula" class="matricula-servidor"></td>
+              <td data-title="Nome:" id="renderNome" class="nome-servidor"></td>
+              <td data-title="Cargo:" id="renderCargo" class="cargo-servidor">
+              </td>
+              <td data-title="Tempo:" id="renderTempo" class="tempo-servidor"></td>
+              <td data-title="Data:" id="renderData" class="data-servidor"></td>
+              <td data-title="Referencia:" id="renderReferencia" class="referencia-servidor"></td>
+              <td data-title="Remuneração:" id="renderRemuneracao"></td>
+              <td data-title="Acordo:" id="renderAcordo"></td> -->
+              <!-- <td data-title="Detalhes:">
+                <img
+                  src="/assets/img/eye.svg"
+                  alt="olho detalhe"
+                  class="detalhe"
+                  data-bs-toggle="modal"
+                  data-bs-target="#exampleModal"
+                />
+              </td> -->
+              <!-- <td data-title="Acordo:" id="renderAcordo"></td> -->
+            <!-- </tr> -->
+          </tbody>
+        </table>
+      </div>
+      
+    </div>
+    <!--FIM TABELA COM TODOS OS DADOS DO SERVIDOR-->
+    
+    <!--INICIO PAGINAÇÃO-->
+    <nav aria-label="Page navigation example" class="mt-2">
+      <ul class="pagination pagination justify-content-center">
+        <li class="page-item">
+          <a class="page-link text-purple" href="#"
+            ><span aria-hidden="true">&laquo;</span></a
+          >
+        </li>
+        <li class="page-item">
+          <a class="page-link text-purple" href="#">1</a>
+        </li>
+        <li class="page-item">
+          <a class="page-link text-purple" href="#">2</a>
+        </li>
+        <li class="page-item">
+          <a class="page-link text-purple" href="#">3</a>
+        </li>
+        <li class="page-item">
+          <a class="page-link text-purple" href="#"
+            ><span aria-hidden="true">&raquo;</span></a
+          >
+        </li>
+      </ul>
+    </nav>
+    <!--FIM PAGINAÇÃO-->
+    <br />
+    <!--MODAL DE DETALHES DO SERVIDOR-->
+    <!-- <div
+      class="modal fade"
+      id="exampleModal"
+      tabindex="-1"
+      aria-labelledby="exampleModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title text-purple" id="exampleModalLabel">
+              Detalhes
+            </h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <div role="alert" id="alertSuccess">
+              <div class="form-group mb-3 container-box">
+                <div
+                  class="w-100 p-3 box-info border border-muted rounded detalhe-modal-sal"
+                >
+                  <div class="text-dark">Data de Admissão</div>
+                  <div class="text-dark fw-bold" id="renderData"></div>
+                </div>
+                <div class="w-100 p-3 box-info border border-muted rounded">
+                  <div class="text-dark text-left">Tempo de serviço</div>
+                  <div class="text-dark fw-bold text-left" id="renderTempo"></div>
+                </div>
+              </div>
+
+              <div class="form-group mb-3 container-box">
+                <div
+                  class="w-100 p-3 box-info border border-muted rounded detalhe-modal-sal"
+                >
+                  <div class="text-dark">Ref. Salário:</div>
+                  <div class="text-danger fw-bold" id="renderReferencia"></div>
+                </div>
+                <div class="w-100 p-3 box-info border border-muted rounded">
+                  <div class="text-dark">Indenização:</div>
+                  <div class="d-flex text-danger fw-bold gap-1" id="renderAcordo">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div> -->
+    <!-- MODAL DE PESQUISA DO SERVIDOR-->
+    <!-- <div
+      class="modal fade w-100"
+      id="exampleModal"
+      tabindex="-1"
+      aria-labelledby="exampleModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content modal-pesquisa">
+          <div class="modal-header">
+            <h5 class="modal-title text-purple" id="exampleModalLabel">
+              Detalhes
+            </h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+              onclick="fecharModal()"></button>
+          </div>
+          <div class="modal-body">
+            <table class="rtable realceLinha table table-striped">
+              <tbody id="tabela-modal">
+                <thead class="color-input align-middle">
+                  <th class="cabecalho text-center">Nome</th>
+                  <th class="cabecalho text-center">Matricula</th>
+                  <th class="cabecalho text-center">Data admissão</th>
+                  <th class="cabecalho text-center">Tempo de serviço</th>
+                  <th class="cabecalho text-center">Cargo</th>
+                  <th class="cabecalho text-center">Salario</th>
+                  <th class="cabecalho text-center">Ref Salarial</th>
+                  <th class="cabecalho text-center">PDI</th>
+                </thead>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div> -->
+
+      <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" id="exampleModal">
+        <div class="modal-dialog modal-lg">
+          <div class="modal-content p-3">
+            <div class="modal-header">
+              <h5 class="modal-title text-purple" id="exampleModalLabel">
+                Detalhes
+              </h5>
+              <button
+                type="button"
+                class="btn-close"
+                data-bs-dismiss="modal"
+                aria-label="Close"
+                onclick="fecharModal()"></button>
+            </div>
+            <div class="table-responsive text-center">
+              <table class="table table-striped">
+                <tbody id="tabela-modal">
+                  <thead class="color-input align-middle">
+                    <th class="cabecalho text-center">Nome</th>
+                    <th class="cabecalho text-center">Matricula</th>
+                    <th class="cabecalho text-center">Data admissão</th>
+                    <th class="cabecalho text-center">Tempo de serviço</th>
+                    <th class="cabecalho text-center">Cargo</th>
+                    <th class="cabecalho text-center">Salario</th>
+                    <th class="cabecalho text-center">Ref Salarial</th>
+                    <th class="cabecalho text-center">PDI</th>
+                    <th class="cabecalho text-center">Adicionar</th>             
+                  </thead>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    
+      <button onclick="topFunction()" id="myBtn" title="Ir ao topo">Topo</button>
+
+  </body>
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <script src="/js/elegiveis.js"></script>
+  <%- include('../../layout/footer.ejs') %>
+</html>
